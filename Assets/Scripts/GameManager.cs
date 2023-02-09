@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerController.gameState == "gameclear")
+        if (PlayerController.gameState == "gameClear")
         {
             mainImage.SetActive(true);
             panel.SetActive(true);
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
             PlayerController.gameState = "gameend";
 
         }
-        else if (PlayerController.gameState == "gameover")
+        else if (PlayerController.gameState == "gameOver")
         {
             mainImage.SetActive(true);
             panel.SetActive(true);
