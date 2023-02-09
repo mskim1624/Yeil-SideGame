@@ -340,6 +340,7 @@ GameObject:
   - component: {fileID: 368241411}
   - component: {fileID: 368241410}
   - component: {fileID: 368241409}
+  - component: {fileID: 368241412}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -411,7 +412,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 368241410}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 368241412}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &368241410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,6 +463,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368241407}
   m_CullTransparentMesh: 1
+--- !u!114 &368241412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368241407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6614e71378c06347b305098ca891868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: 
 --- !u!1 &427239246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1055,6 +1081,7 @@ GameObject:
   - component: {fileID: 727325938}
   - component: {fileID: 727325937}
   - component: {fileID: 727325936}
+  - component: {fileID: 727325939}
   m_Layer: 5
   m_Name: NextButton
   m_TagString: Untagged
@@ -1165,6 +1192,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727325934}
   m_CullTransparentMesh: 1
+--- !u!114 &727325939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727325934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6614e71378c06347b305098ca891868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: 
 --- !u!1001 &928728406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1308,6 +1348,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313e5f45b458d454389bd3955958dec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainImage: {fileID: 649726090}
+  gameOver: {fileID: 21300000, guid: f43bfadc8ed40c940867d789d15b3a27, type: 3}
+  gameClear: {fileID: 21300000, guid: ad7050665a3e8aa48abdcc9c95bdd125, type: 3}
+  panel: {fileID: 427239246}
+  restartButton: {fileID: 368241407}
+  nextButton: {fileID: 727325934}
 --- !u!4 &1008339380
 Transform:
   m_ObjectHideFlags: 0
