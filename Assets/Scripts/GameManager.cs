@@ -13,12 +13,16 @@ public class GameManager : MonoBehaviour
 
     Image titleImage;
 
+    string oldGameState;
+
     // Start is called before the first frame update
     void Start()
     {
         Invoke("InactiveImage", 1.0f);
 
         panel.SetActive(false);
+
+        oldGameState = PlayerController.gameState;
     }
 
     void InactiveImage()
@@ -30,6 +34,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (oldGameState != PlayerController.gameState)
+        {
+            Debug.Log(PlayerController.gameState);
+        }
+
         if (PlayerController.gameState == "gameClear")
         {
             mainImage.SetActive(true);
