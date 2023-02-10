@@ -27,6 +27,11 @@ public class MovingBlock : MonoBehaviour
         perDx = moveX / (1.0f / timeStep * times);
         // 1프레임의 y 이동값
         perDy = moveY / (1.0f / timeStep * times);
+
+        if (isMoveWhenOn)
+        {
+            isCanMove = false;
+        }
     }
 
     private void FixedUpdate()
@@ -40,11 +45,11 @@ public class MovingBlock : MonoBehaviour
 
             if (isReverse)
             {
-                if ((perDx >= 0.0f && x <= defPos.x + moveX) || (perDx < 0.0f && x >= defPos.x + moveX))
+                if ((perDx >= 0.0f && x <= defPos.x) || (perDx < 0.0f && x >= defPos.x))
                 {
                     endX = true;
                 }
-                if ((perDy >= 0.0f && y <= defPos.y + moveY) || (perDy < 0.0f && y >= defPos.y + moveY))
+                if ((perDy >= 0.0f && y <= defPos.y) || (perDy < 0.0f && y >= defPos.y))
                 {
                     endY = true;
                 }
