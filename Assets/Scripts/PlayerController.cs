@@ -111,6 +111,8 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.LogError(collision.gameObject.tag);
+
         if (collision.gameObject.tag == "Goal")
         {
             Goal();
@@ -139,7 +141,7 @@ public class PlayerController : MonoBehaviour
         GameStop();
     }
 
-    void GameStop()
+    public void GameStop()
     {
         rbody.velocity = new Vector2(0, 0);
     }

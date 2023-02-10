@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
 
     string oldGameState;
 
+    public GameObject timeBar;
+    public GameObject timeText;
+    TimeController timeCnt;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +27,15 @@ public class GameManager : MonoBehaviour
         panel.SetActive(false);
 
         oldGameState = PlayerController.gameState;
+
+        timeCnt = GetComponent<TimeController>();
+        if (timeCnt != null)
+        {
+            if (timeCnt.gameTime == 0.0f)
+            {
+                timeBar.SetActive(false);
+            }
+        }
     }
 
     void InactiveImage()
@@ -49,6 +62,10 @@ public class GameManager : MonoBehaviour
             mainImage.GetComponent<Image>().sprite = gameClear;
             PlayerController.gameState = "gameend";
 
+            if(timeCnt != null)
+            {
+                timeCnt.isTimeOver = true;
+            }
         }
         else if (PlayerController.gameState == "gameOver")
         {
@@ -59,10 +76,30 @@ public class GameManager : MonoBehaviour
             btNext.interactable = false;
             mainImage.GetComponent<Image>().sprite = gameOver;
             PlayerController.gameState = "gameend";
+
+            if (timeCnt != null)
+            {
+                timeCnt.isTimeOver = true;
+            }
         }
         else if (PlayerController.gameState == "playing")
         {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            PlayerController playerController = player.GetComponent<PlayerController>();
 
+            if(timeCnt != null)
+            {
+                if (timeCnt.gameTime > 0.0f)
+                {
+                    int time = (int)timeCnt.displayTime;
+                    timeText.GetComponent<Text>().text = time.ToString();
+
+                    if (time == 0)
+                    {
+                        playerController.GameStop();
+                    }
+                }
+            }
         }
 
     }
