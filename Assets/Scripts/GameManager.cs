@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour
     public GameObject timeText;
     TimeController timeCnt;
 
+    public GameObject scoreText;    // 점수 텍스트
+    public static int totalScore;   // 점수 총합
+    public int stageScore = 0;      // 스테이지 점수
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +40,14 @@ public class GameManager : MonoBehaviour
                 timeBar.SetActive(false);
             }
         }
+
+        UpdateScore();
+    }
+
+    void UpdateScore()
+    {
+        int score = stageScore + totalScore;
+        scoreText.GetComponent<Text>().text = score.ToString();
     }
 
     void InactiveImage()
@@ -65,7 +77,14 @@ public class GameManager : MonoBehaviour
             if(timeCnt != null)
             {
                 timeCnt.isTimeOver = true;
+
+                int time = (int)timeCnt.displayTime;
+                totalScore += time * 10;
             }
+
+            totalScore += stageScore;
+            stageScore = 0;
+            UpdateScore();
         }
         else if (PlayerController.gameState == "gameOver")
         {
@@ -96,9 +115,16 @@ public class GameManager : MonoBehaviour
 
                     if (time == 0)
                     {
-                        playerController.GameStop();
+                        playerController.GameOver();
                     }
                 }
+            }
+
+            if (playerController.score != 0)
+            {
+                stageScore += playerController.score;
+                playerController.score = 0;
+                UpdateScore();
             }
         }
 

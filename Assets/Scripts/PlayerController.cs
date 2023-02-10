@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Dead")
         {
-            Dead();
+            GameOver();
         }
 
         if (collision.gameObject.tag == "ScoreItem")
@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Dead()
+    public void GameOver()
     {
         animator.Play(overAnime);
         gameState = "gameOver";
@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour
         GameStop();
     }
 
-    public void GameStop()
+    void GameStop()
     {
         rbody.velocity = new Vector2(0, 0);
     }
